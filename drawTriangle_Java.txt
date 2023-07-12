@@ -1,0 +1,37 @@
+import java.util.Scanner ;
+
+class Triangle{
+	public static void main(String[] args){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("請輸入你想繪製的三角形邊長: ");
+		int input_number = sc.nextInt() ;
+		if(input_number<1){
+			System.out.print("請輸入正確長度!");
+		}else{
+			new Triangle().drawTriangle(input_number) ;
+		}
+	}
+	public void drawTriangle(int input){
+		for(int i = 1; i <= input; i++){
+			
+			//印出左邊空白三角形
+			for(int j = 1; j <= input-i; j++){
+				System.out.print(" ") ;
+			}
+			
+			for(int k = 1; k <=i; k++){
+				//最後一層印出三角形底邊
+				if(i == input){
+					System.out.print("*") ;
+				}else if(k == 1 || k == i){
+					//印出三角形每層兩邊的點
+					System.out.print("*") ;
+				}else{
+					//不是邊的部分印空值
+					System.out.print(" ") ;
+				}
+			}
+			System.out.println() ;
+		}
+	}
+}

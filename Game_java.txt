@@ -1,0 +1,38 @@
+import java.util.Scanner ;
+
+class Game{
+	public static void main(String[] args){
+		int people = 0 ; //使用者輸入參加人數
+		int count = 0 ; //紀錄報數
+		int arr_people ;
+		int remain_people_count = 0 ; 
+		int index = 0 ;
+			
+		Scanner sc = new Scanner(System.in);
+		System.out.print("請輸入幾個人報名團康活動(0~100人): ");
+		people = sc.nextInt() ;
+		arr_people = new int[people] ;
+		remain_people_count = people ;
+		for(int i : arr_people){
+			arr_people[i]=1 ; //1代表存活, 0表示出局
+		}
+		
+		while(remain_people_count>1){
+			for(int i=1; i<=arr_people.length; i++){
+				if(arr_people[i]==1){
+					count++ ;
+					if(count%3==0){
+						arr_people[i] = 0;
+						count = 0 ;//報數歸零
+						remain_people_count-- ;				
+					}
+				}
+			}
+		}
+		for(int i=1; i<=arr_people.length; i++){
+			if(arr_people[i]==1){
+				System.out.println("最後留下的為第"+ i +"順位") ;
+			}
+		}
+	}
+}
